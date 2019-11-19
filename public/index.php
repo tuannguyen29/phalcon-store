@@ -39,6 +39,17 @@ try {
      */
     $application = new \Phalcon\Mvc\Application($di);
 
+    // Register the installed modules
+    $application->registerModules(
+        [
+            'admin' => [
+                'className' => 'Application\Admin',
+                'path'      => '../modules/admin/Module.php',
+                'autoload'  => true
+            ],
+        ]
+    );
+
     echo $application->handle()->getContent();
 
 } catch (\Exception $e) {

@@ -14,6 +14,19 @@ class ProductsController extends ControllerBase
         $this->persistent->parameters = null;
     }
 
+    public function showAction()
+    {
+        var_dump('show-product');
+        die;
+    }
+
+    public function getAction($param1, $param2 = 0)
+    {
+        var_dump($param1, $param2);
+        var_dump($this->dispatcher->getParam('lang'));
+        die;
+    }
+
     /**
      * Searches for products
      */
@@ -116,7 +129,7 @@ class ProductsController extends ControllerBase
         $product->status = $this->request->getPost("status");
         $product->createdAt = $this->request->getPost("created_at");
         $product->updatedAt = $this->request->getPost("updated_at");
-        
+
 
         if (!$product->save()) {
             foreach ($product->getMessages() as $message) {
@@ -176,7 +189,7 @@ class ProductsController extends ControllerBase
         $product->status = $this->request->getPost("status");
         $product->createdAt = $this->request->getPost("created_at");
         $product->updatedAt = $this->request->getPost("updated_at");
-        
+
 
         if (!$product->save()) {
             foreach ($product->getMessages() as $message) {
